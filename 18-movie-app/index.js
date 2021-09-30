@@ -17,7 +17,10 @@ async function getMovies(url) {
   const res = await fetch(url)
   const data = await res.json()
   console.log(data.results)
-  showMovies(data.results);
+  let resultsWithImages = data.results.filter(result => (
+    result.backdrop_path !== null
+  ))
+  showMovies(resultsWithImages);
 }
 
 
